@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FirebaseListObservable, AngularFireDatabase } from 'angularfire2/database';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+  booklists: FirebaseListObservable<any[]>;
+
+  constructor(public angularFireDatabase: AngularFireDatabase) {
+
+    this.booklists = angularFireDatabase.list('/user');
+  }
+
 }

@@ -1,0 +1,20 @@
+<p>
+  todolist works!
+</p>
+<form [formGroup]="todoListForm" (ngSubmit)="onSubmit(form)">
+  <input type="text" formControlName="todoInput">
+  <button type="submit" >send</button>
+</form>
+<div>
+  <!-- <ul>
+     <li *ngFor="let todoLists of todoList | async">
+
+       {{ todoLists.$key }} : {{ todoLists.$value }}
+
+     </li>
+   </ul>-->
+
+  <ul>
+    <li *ngFor="let todoLists of todoList;let i=index">{{todoLists.name}}  <i class="delete" (click)="deleteTask(i)">x</i></li>
+  </ul>
+</div>

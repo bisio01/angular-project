@@ -1,0 +1,21 @@
+<div>
+  <ul>
+    <li *ngFor="let loginLists of loginList | async">
+
+      {{ loginLists.$key }} : {{ loginLists.$value }}
+
+    </li>
+  </ul>
+</div>
+
+<form [formGroup]="authForm" (submit)="onSubmitAuth(form)">
+  <div>
+    <input type="email" class="email" formControlName="email">
+  </div>
+  <div>
+    <input type="password" class="password" formControlName="password">
+  </div>
+  <div>
+    <button type="submit">login</button>
+  </div>
+</form>

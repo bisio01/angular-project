@@ -3,7 +3,7 @@
 </p>
 <form [formGroup]="todoListForm" (ngSubmit)="onSubmit(form)">
   <input type="text" formControlName="todoInput">
-  <button type="submit" >send</button>
+  <button type="submit">send</button>
 </form>
 <div>
   <!-- <ul>
@@ -13,8 +13,19 @@
 
      </li>
    </ul>-->
-
+  <h3>New Task</h3>
   <ul>
-    <li *ngFor="let todoLists of todoList;let i=index">{{todoLists.name}}  <i class="delete" (click)="deleteTask(i)">x</i></li>
+    <li *ngFor="let todoLists of todoList;let i=index">
+      <input type="checkbox" [(ngModel)]="todoLists.completed">
+      <span>{{todoLists.name}}</span>
+      <i class="delete" (click)="deleteTask(i)">[x]</i>
+    </li>
+  </ul>
+  <div><button type="button" (click)="doneTask()" >Done</button> </div>
+  <h3>Done Task</h3>
+  <ul>
+    <li *ngFor="let doneTaskLists of doneTaskList; let i=index">
+      <span>{{doneTaskLists.name}}</span>
+    </li>
   </ul>
 </div>

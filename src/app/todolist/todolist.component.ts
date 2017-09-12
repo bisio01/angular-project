@@ -11,12 +11,14 @@ export class TodolistComponent implements OnInit {
 
 
   public todoList: any = [];
+  public doneTaskList: any = [];
   public todoListName = '';
   //todoList: FirebaseListObservable<any[]>;
 
   public todoListForm: FormGroup = new FormGroup({
     todoInput: new FormControl('')
   });
+
 
   constructor(public angularFireDatabase: AngularFireDatabase,
               public elementRef: ElementRef) {
@@ -31,18 +33,39 @@ export class TodolistComponent implements OnInit {
   public onSubmit() {
 
     this.todoListName = this.todoListForm.value.todoInput;
+    console.log(this.todoListName);
+    this.todoList = this.todoList || [];
 
-    this.todoList.push({id: Math.round((Math.random() * 1000) + 1), name: this.todoListName});
-    this.updateStore();
+    if (this.todoListName.length) {
+      this.todoList.push(
+        {
+          id: Math.round((Math.random() * 1000) + 1),
+          name: this.todoListName,
+          completed: false
+        });
+      this.updateStore();
+    }
 
-    console.log(this.todoList);
 
   }
 
   public deleteTask(index) {
-    this.todoList.splice(index, 1)
+    this.todoList.splice(index, 1);
+  }
 
-    console.log(index, 'slice');
+  public doneTask() {
+
+    for (let i = 0; i <= this.todoList.length - 1; i++) {
+
+      this.doneTaskList = this.todoList.filter(
+        todoList => todoList.completed === true
+      );
+      console.log(this.doneTaskList);
+
+
+    }
+    console.log(this.todoList);
+
   }
 
   public updateStore() {

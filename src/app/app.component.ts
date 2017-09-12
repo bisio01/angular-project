@@ -8,11 +8,11 @@ import { FirebaseListObservable, AngularFireDatabase } from 'angularfire2/databa
 })
 export class AppComponent {
   title = 'app';
-  booklists: FirebaseListObservable<any[]>;
 
-  constructor(public angularFireDatabase: AngularFireDatabase) {
 
-    this.booklists = angularFireDatabase.list('/user');
+  constructor() {
+
+
   }
 
 }

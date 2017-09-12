@@ -6,7 +6,11 @@ import { AngularFireModule } from 'angularfire2';
 import { AppComponent } from './app.component';
 import { TodolistComponent } from './todolist/todolist.component';
 import { RouterModule } from '@angular/router';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { AuthLoginComponent } from './auth/auth-login/auth-login.component';
+import { AuthRegistrationComponent } from './auth/auth-registration/auth-registration.component';
+import { AuthForgotPassComponent } from './auth/auth-forgot-pass/auth-forgot-pass.component';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 
 export const firebaseConfig = {
@@ -21,7 +25,10 @@ export const firebaseConfig = {
 @NgModule({
   declarations: [
     AppComponent,
-    TodolistComponent
+    TodolistComponent,
+    AuthLoginComponent,
+    AuthRegistrationComponent,
+    AuthForgotPassComponent
   ],
   imports: [
     BrowserModule,
@@ -29,8 +36,11 @@ export const firebaseConfig = {
     RouterModule.forRoot(<any>ROUTES),
     ReactiveFormsModule,
     AngularFireDatabaseModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [
+    AngularFireAuth
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

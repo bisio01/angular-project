@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
 import { ROUTES } from './app.routes';
 import { AngularFireModule } from 'angularfire2';
 import { AppComponent } from './app.component';
@@ -39,7 +39,8 @@ export const firebaseConfig = {
     FormsModule
   ],
   providers: [
-    AngularFireAuth
+    AngularFireAuth,
+    AngularFireDatabase
   ],
   bootstrap: [AppComponent]
 })

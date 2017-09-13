@@ -28,4 +28,12 @@
       <span>{{doneTaskLists.name}}</span>
     </li>
   </ul>
+
+  <h3>FireBase</h3>
+  <ul>
+    <li *ngFor="let todoLists of todoListData | async;let i=index">
+      <span>{{todoLists.content}}</span>
+      <i class="delete" (click)="deleteTask(i)">[x]</i>
+    </li>
+  </ul>
 </div>

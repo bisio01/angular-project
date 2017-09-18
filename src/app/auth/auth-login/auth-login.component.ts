@@ -25,25 +25,25 @@ export class AuthLoginComponent implements OnInit {
               public angularFireAuth: AngularFireAuth,) {
     this.loginList = angularFireDatabase.list('/user');
     this.user = angularFireAuth.authState;
-    console.log(this.user, 'qweqwe');
+
   }
 
-  public login(login: string, password: string) {
+  public onSubmitAuth() {
+    event.preventDefault();
+
+    let email = this.authForm.value.email;
+    let password = this.authForm.value.password;
+
     this.angularFireAuth
       .auth
-      .signInWithEmailAndPassword(login, password)
+      .signInWithEmailAndPassword(email, password)
       .then(value => {
         console.log('Nice, it worked!');
+        this.router.navigate(['/todolist']);
       })
       .catch(err => {
         console.log('Something went wrong:', err.message);
       });
-  }
-
-  public onSubmitAuth() {
-    this.login(this.authForm.value.email, this.authForm.value.password);
-    this.router.navigate(['/todolist']);
-
   }
 
   ngOnInit() {

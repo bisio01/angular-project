@@ -11,6 +11,13 @@ import { AuthLoginComponent } from './auth/auth-login/auth-login.component';
 import { AuthRegistrationComponent } from './auth/auth-registration/auth-registration.component';
 import { AuthForgotPassComponent } from './auth/auth-forgot-pass/auth-forgot-pass.component';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { UserInfoComponent } from './user-info/user-info.component';
+import { CurrencyExchangeComponent } from './money-manager/currency-exchange/currency-exchange.component';
+import { CreateComponent } from './money-manager/user-manager/create/create.component';
+import { UpdateComponent } from './money-manager/user-manager/update/update.component';
+import { ViewComponent } from './money-manager/user-manager/view/view.component';
+import { ListComponent } from './money-manager/user-manager/list/list.component';
 
 
 export const firebaseConfig = {
@@ -28,7 +35,14 @@ export const firebaseConfig = {
     TodolistComponent,
     AuthLoginComponent,
     AuthRegistrationComponent,
-    AuthForgotPassComponent
+    AuthForgotPassComponent,
+    DashboardComponent,
+    UserInfoComponent,
+    CurrencyExchangeComponent,
+    CreateComponent,
+    UpdateComponent,
+    ViewComponent,
+    ListComponent,
   ],
   imports: [
     BrowserModule,

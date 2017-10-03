@@ -18,6 +18,7 @@ import { CreateComponent } from './money-manager/user-manager/create/create.comp
 import { UpdateComponent } from './money-manager/user-manager/update/update.component';
 import { ViewComponent } from './money-manager/user-manager/view/view.component';
 import { ListComponent } from './money-manager/user-manager/list/list.component';
+import { HttpModule } from '@angular/http';
 
 
 export const firebaseConfig = {
@@ -47,6 +48,7 @@ export const firebaseConfig = {
   imports: [
     BrowserModule,
     AngularFireModule.initializeApp(firebaseConfig),
+    HttpModule,
     RouterModule.forRoot(<any>ROUTES),
     ReactiveFormsModule,
     AngularFireDatabaseModule,

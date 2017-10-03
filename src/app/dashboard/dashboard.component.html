@@ -1,3 +1,24 @@
 <p>
   dashboard works!
 </p>
+
+<ul class="navigation">
+  <li>
+    <a [routerLink]="['/todolist']" [routerLinkActive]="['active']">todolist</a>
+  </li>
+  <li>
+    <a [routerLink]="['/user']" [routerLinkActive]="['active']">user</a>
+  </li>
+
+  <li>
+    <a [routerLink]="['/money-manager']" [routerLinkActive]="['active']">money-manager</a>
+  </li>
+  <li>
+    <a [routerLink]="['/money-manager/currency-exchange']" [routerLinkActive]="['active']">currency-exchange</a>
+  </li>
+  <li>
+    <a [routerLink]="['/money-manager/create']" [routerLinkActive]="['active']">create</a>
+  </li>
+</ul>
+
+<router-outlet></router-outlet>

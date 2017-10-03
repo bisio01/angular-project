@@ -19,6 +19,7 @@ import { UpdateComponent } from './money-manager/user-manager/update/update.comp
 import { ViewComponent } from './money-manager/user-manager/view/view.component';
 import { ListComponent } from './money-manager/user-manager/list/list.component';
 import { HttpModule } from '@angular/http';
+import { WeatherComponent } from './weather/weather.component';
 
 
 export const firebaseConfig = {
@@ -44,6 +45,7 @@ export const firebaseConfig = {
     UpdateComponent,
     ViewComponent,
     ListComponent,
+    WeatherComponent,
   ],
   imports: [
     BrowserModule,

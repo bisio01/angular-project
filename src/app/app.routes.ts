@@ -5,6 +5,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { UserInfoComponent } from './user-info/user-info.component';
 import { MoneyRoutes } from './money-manager/money.routes';
 import { DashboardRoutes } from './dashboard/dashboard.routes';
+import { WeatherComponent } from './weather/weather.component';
 
 export const ROUTES:RouterModule = [
   {
@@ -26,7 +27,11 @@ export const ROUTES:RouterModule = [
         path: 'todolist',
         component: TodolistComponent
       },
-      ...MoneyRoutes
+      ...MoneyRoutes,
+      {
+        path: 'weather',
+        component: WeatherComponent
+      },
     ]
   }
 ];

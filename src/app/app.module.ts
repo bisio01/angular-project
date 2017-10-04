@@ -20,6 +20,7 @@ import { ViewComponent } from './money-manager/user-manager/view/view.component'
 import { ListComponent } from './money-manager/user-manager/list/list.component';
 import { HttpModule } from '@angular/http';
 import { WeatherComponent } from './weather/weather.component';
+import { WeatherService } from './weather/weatherService';
 
 
 export const firebaseConfig = {
@@ -58,7 +59,8 @@ export const firebaseConfig = {
   ],
   providers: [
     AngularFireAuth,
-    AngularFireDatabase
+    AngularFireDatabase,
+    WeatherService
   ],
   bootstrap: [AppComponent]
 })

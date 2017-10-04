@@ -19,7 +19,7 @@ export class CurrencyExchangeComponent implements OnInit {
     this.letSearch();
     this.getRates();
 
-    let x = this.cars.filter((val, i, cars) =>{
+    let x = this.cars.filter((val, i, cars) => {
 
 
       return val === 'Volvo';
@@ -32,9 +32,11 @@ export class CurrencyExchangeComponent implements OnInit {
   // Get http result
   public letSearch() {
     this.url = "http://api.fixer.io/latest";
-    return this.http.get(this.url).map((res) => {return res.json()}).subscribe(
+    return this.http.get(this.url).map((res) => {
+      return res.json()
+    }).subscribe(
       data => {
-        for(let key in data.rates) {
+        for (let key in data.rates) {
           this.ratesData.push({label: key, value: data.rates[key]});
         }
 
@@ -44,8 +46,6 @@ export class CurrencyExchangeComponent implements OnInit {
       () => console.log("Fine !")
     )
   }
-
-
 
 
   public getRates() {
@@ -58,3 +58,5 @@ export class CurrencyExchangeComponent implements OnInit {
 
 
 }
+
+

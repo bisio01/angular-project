@@ -1,6 +1,13 @@
-<p>
-  weather works!
-</p>
+<h2>Weather</h2>
+
+<p>{{results?.location?.name}}</p>
+<p>{{results?.current?.temp_c}}</p>
+<p>{{results?.current?.wind_kph}}</p>
+<p>{{results?.current?.humidity}}</p>
+<p>{{results?.current?.pressure_in}}</p>
+<p>{{results?.current?.condition?.text}}</p>
+<img src="{{results?.current?.condition?.icon}}">
+
 <input type="text" [(ngModel)]="city">
 <button (click)="loadData(city)">load</button>
 

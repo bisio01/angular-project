@@ -14,6 +14,8 @@ export class CurrencyExchangeComponent implements OnInit {
   public url;
   public ratesData: any = [];
   public cars = ["Saab", "Volvo", "BMW"];
+  public current;
+
 
   constructor(private http: Http) {
     this.letSearch();
@@ -39,8 +41,8 @@ export class CurrencyExchangeComponent implements OnInit {
         for (let key in data.rates) {
           this.ratesData.push({label: key, value: data.rates[key]});
         }
+        console.log(data);
 
-        console.log(this.results.rates, 'data');
       },
       error => console.log(error),
       () => console.log("Fine !")

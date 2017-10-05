@@ -2,6 +2,11 @@
   currency-exchange works!
 </p>
 
+
+<input type="number" [(ngModel)]="current">
+
 <ul>
-  <li *ngFor="let result of ratesData; let i = index">{{result.label}} <span>{{result.value}}</span></li>
+  <li *ngFor="let result of ratesData; let i = index">{{result.label}} <span>{{result.value}}</span> <span *ngIf="current?.length">{{result.value * current}}</span></li>
 </ul>
+
+

@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
 import { ROUTES } from './app.routes';
 import { AngularFireModule } from 'angularfire2';
@@ -20,7 +20,9 @@ import { ViewComponent } from './money-manager/user-manager/view/view.component'
 import { ListComponent } from './money-manager/user-manager/list/list.component';
 import { HttpModule } from '@angular/http';
 import { WeatherComponent } from './weather/weather.component';
-import { WeatherService } from './weather/weatherService';
+import { WeatherService } from './weather/weather.service';
+import { UserManagerService } from './money-manager/user-manager/user-manager.service';
+import { MDBBootstrapModule } from 'angular-bootstrap-md'
 
 
 export const firebaseConfig = {
@@ -55,13 +57,16 @@ export const firebaseConfig = {
     RouterModule.forRoot(<any>ROUTES),
     ReactiveFormsModule,
     AngularFireDatabaseModule,
-    FormsModule
+    FormsModule,
+    MDBBootstrapModule.forRoot()
   ],
   providers: [
     AngularFireAuth,
     AngularFireDatabase,
-    WeatherService
+    WeatherService,
+    UserManagerService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [ NO_ERRORS_SCHEMA ]
 })
 export class AppModule { }

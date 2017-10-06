@@ -1,3 +1,11 @@
 <p>
   list works!
 </p>
+<ul>
+  <li *ngFor="let amountMoneyList of moneyTaskList | async;let i=index">
+    <span>{{amountMoneyList.value}}</span>
+    <span>{{amountMoneyList.description}}</span>
+    <span>{{amountMoneyList.date}}</span>
+    <!-- <i class="delete" (click)="deleteTask(i)">[x]</i>-->
+  </li>
+</ul>

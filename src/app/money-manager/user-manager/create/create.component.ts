@@ -12,7 +12,6 @@ import { UserManagerService } from '../user-manager.service';
 export class CreateComponent implements OnInit {
   public amountMoneyVal;
   public moneyTaskList;
-
  // public moneyTaskList: FirebaseListObservable<any[]> = this.angularFireDatabase.list('/amountMoney');
 
 
@@ -37,7 +36,8 @@ export class CreateComponent implements OnInit {
     userManagerService.getList().then((res: any[]) => {
       this.moneyTaskList = res;
     });
-    console.log(this.amountMoneyVal);
+
+
   }
 
   public createSpendMoney() {
@@ -49,7 +49,14 @@ export class CreateComponent implements OnInit {
     console.log(this.amountMoneyVal);
   }
 
+
+
+
+
+
   ngOnInit() {
+
+
   }
 
 }

@@ -25,6 +25,7 @@ import { UserManagerService } from './money-manager/user-manager/user-manager.se
 import { MDBBootstrapModule } from 'angular-bootstrap-md'
 
 
+
 export const firebaseConfig = {
   apiKey: "AIzaSyDgQVB1LyDiKFk72aQm0NreOQsZL9dxF4s",
   authDomain: "login-test-aa4ed.firebaseapp.com",
@@ -58,7 +59,8 @@ export const firebaseConfig = {
     ReactiveFormsModule,
     AngularFireDatabaseModule,
     FormsModule,
-    MDBBootstrapModule.forRoot()
+    MDBBootstrapModule.forRoot(),
+
   ],
   providers: [
     AngularFireAuth,

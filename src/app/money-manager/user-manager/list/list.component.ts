@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserManagerService } from '../user-manager.service';
 
 @Component({
   selector: 'app-list',
@@ -7,7 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListComponent implements OnInit {
 
-  constructor() { }
+  public moneyTaskList;
+
+  constructor(public userManagerService: UserManagerService) {
+    userManagerService.getList().then((res: any[]) => {
+      this.moneyTaskList = res;
+    });
+
+
+  }
 
   ngOnInit() {
   }

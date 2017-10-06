@@ -8,21 +8,28 @@ import { WeatherService } from './weather.service';
 })
 export class WeatherComponent implements OnInit {
   city: string;
+  yourCityResults: string;
 
   public results: any = {};
 
 
   constructor(private weatherService: WeatherService) {
-    this.loadData();
+    this.yourCity();
 
   }
 
   ngOnInit() {
   }
 
-  loadData(city: string = 'Kharkiv') {
+  loadData(city) {
     this.weatherService.getByCity(city).subscribe((res) => {
       this.results = res;
+    })
+  }
+
+   yourCity(city: string = 'Kharkiv') {
+    this.weatherService.getByCity(city).subscribe((res) => {
+      this.yourCityResults = res;
     })
   }
 

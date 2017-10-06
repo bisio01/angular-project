@@ -1,15 +1,42 @@
-<h2>Weather</h2>
+<div class="content content-bg">
+  <div class="container">
+    <h2>Weather</h2>
+    <div class="weather-container">
+      <div><p>City</p><span>{{yourCityResults?.location?.name}}</span></div>
+      <div><p>Temperature</p><span>{{yourCityResults?.current?.temp_c}}</span></div>
+      <div><p>Wind</p><span>{{yourCityResults?.current?.wind_kph}}</span></div>
+      <div><p>Humidity</p><span>{{yourCityResults?.current?.humidity}}</span></div>
+      <div><p>Pressure</p><span>{{yourCityResults?.current?.pressure_in}}</span></div>
+      <div><p>Last Update</p><span>{{yourCityResults?.current?.last_updated}}</span></div>
+      <div><p>Description</p><span>{{yourCityResults?.current?.condition?.text}}</span><img
+        src="{{yourCityResults?.current?.condition?.icon}}"></div>
 
-<p>{{results?.location?.name}}</p>
-<p>{{results?.current?.temp_c}}</p>
-<p>{{results?.current?.wind_kph}}</p>
-<p>{{results?.current?.humidity}}</p>
-<p>{{results?.current?.pressure_in}}</p>
-<p>{{results?.current?.condition?.text}}</p>
-<img src="{{results?.current?.condition?.icon}}">
+    </div>
+    <div class="form-inline">
+      <div class="md-form form-group">
+        <input class="input-city" type="text" [(ngModel)]="city">
+      </div>
+      <div class="md-form form-group">
+        <button class="btn btn-primary waves-light" (click)="loadData(city)" mdbRippleRadius>Load</button>
+      </div>
+    </div>
+  </div>
 
-<input type="text" [(ngModel)]="city">
-<button (click)="loadData(city)">load</button>
+</div>
+<div class="container">
+  <div class="result">
+    <div class="weather-container" *ngIf="results?.location?.name">
+      <div>{{results?.location?.name}}</div>
+      <div><p>Temperature</p><span>{{results?.current?.temp_c}}</span></div>
+      <div><p>Wind</p><span>{{results?.current?.wind_kph}}</span></div>
+      <div><p>Humidity</p><span>{{results?.current?.humidity}}</span></div>
+      <div><p>Pressure</p><span>{{results?.current?.pressure_in}}</span></div>
+      <div><p>Last Update</p><span>{{results?.current?.last_updated}}</span></div>
+      <div>{{results?.location?.localtime}}</div>
+      <div><p>Description</p><span>{{results?.current?.condition?.text}}</span><img
+        src="{{results?.current?.condition?.icon}}"></div>
+    </div>
+  </div>
+</div>
 
-<pre>{{results | json}}</pre>
-<p>{{results?.location?.name}}</p>
+

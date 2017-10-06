@@ -1,4 +1,4 @@
-<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark bg-default" [containerInside]="false">
+<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark" [containerInside]="false">
   <logo>
     <a class="logo navbar-brand" href="#"><strong>Navbar</strong></a>
   </logo>
@@ -22,25 +22,17 @@
       <li class="nav-item waves-light" mdbRippleRadius>
         <a class="nav-link" [routerLink]="['/money-manager/create']" [routerLinkActive]="['active']">create</a>
       </li>
-    </ul>
-    <ul class="navbar-nav nav-flex-icons">
       <li class="nav-item waves-light" mdbRippleRadius>
-        <a class="nav-link"><i class="fa fa-facebook"></i></a>
-      </li>
-      <li class="nav-item waves-light" mdbRippleRadius>
-        <a class="nav-link"><i class="fa fa-twitter"></i></a>
-      </li>
-      <li class="nav-item waves-light" mdbRippleRadius>
-        <a class="nav-link"><i class="fa fa-instagram"></i></a>
+        <a class="nav-link" [routerLink]="['/money-manager/list']" [routerLinkActive]="['active']">list</a>
       </li>
     </ul>
   </links>
 </mdb-navbar>
 <!-- Main -->
 <main>
-  <div class="container">
-    <router-outlet></router-outlet>
-  </div>
+
+  <router-outlet></router-outlet>
+
 </main>
 <!-- /.Main -->
 

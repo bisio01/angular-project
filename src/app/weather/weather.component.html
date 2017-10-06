@@ -32,7 +32,7 @@
       <div><p>Humidity</p><span>{{results?.current?.humidity}}</span></div>
       <div><p>Pressure</p><span>{{results?.current?.pressure_in}}</span></div>
       <div><p>Last Update</p><span>{{results?.current?.last_updated}}</span></div>
-      <div>{{results?.location?.localtime}}</div>
+      <div><p>Local Time</p>{{results?.location?.localtime}}</div>
       <div><p>Description</p><span>{{results?.current?.condition?.text}}</span><img
         src="{{results?.current?.condition?.icon}}"></div>
     </div>

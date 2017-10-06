@@ -1,46 +1,103 @@
-<p>
-  create works!
-</p>
-<form [formGroup]="createSpendMoneyForm">
-  <div>
-    <label>enter amount</label>
-    <input type="number" formControlName="amountMoney">
-  </div>
-  <div>
-    <label>select category</label>
-    <div class="row">
-      <div class="col-md-6">
-        <label>Example label</label>
-      </div>
+<div class="container">
+  <form [formGroup]="createSpendMoneyForm">
+    <div class="">
+      <label>enter name</label>
+      <input type="text" formControlName="name">
     </div>
 
 
-    <select>
-      <option>Food</option>
-      <option>House</option>
-      <option>Cafe</option>
-      <option>Kitchen</option>
-    </select>
+    <div>
+      <label>enter amount</label>
+      <input type="number" formControlName="amountMoney">
+    </div>
+    <div>
+      <label>select category</label>
+      <div class="row">
+        <div class="col-md-6">
+          <label>Example label</label>
+        </div>
+      </div>
+
+      <select (click)="refreshList()" formControlName="moneyCategory">
+        <option *ngFor="let category of categoryList | async;let i=index"  [value]="category?.i">{{category?.value}}</option>
+      </select>
+    </div>
+    <div>
+      <label>select date</label>
+      <input formControlName="date" type="date">
+    </div>
+    <div>
+      <label>description</label>
+      <textarea formControlName="description"></textarea>
+    </div>
+    <button type="button" (click)="createSpendMoney($event)" class="btn btn-primary waves-light" mdbRippleRadius>add
+    </button>
+  </form>
+
+  <input type="text" placeholder="add category" [(ngModel)]="addCategory">
+  <button (click)="addCategoryData()" >add</button>
+
+  <div class="item-wrapper" >
+    <!--Card Dark-->
+    <div class="card card-dark" *ngFor="let amountMoneyList of moneyTaskList | async;let i=index">
+      <!--Card image-->
+      <div class="view hm-white-slight waves-light" mdbRippleRadius>
+        <p>{{amountMoneyList.date}}</p>
+       <!-- <img src="https://mdbootstrap.com/img/Photos/Horizontal/Work/4-col/img%20%2821%29.jpg" class="img-fluid" alt="">-->
+        <a>
+          <div class="mask"></div>
+        </a>
+      </div>
+      <!--/.Card image-->
+      <!--Card content-->
+      <div class="card-body">
+        <!--Social shares button-->
+        <a class="activator"><i class="fa fa-share-alt white-text"></i></a>
+        <!--Title-->
+
+        <h4 class="card-title">{{amountMoneyList.name}}</h4>
+        <hr>
+        <h4 class="card-title">{{amountMoneyList.value}}</h4>
+        <!--Text-->
+        <p class="card-text white-text">{{amountMoneyList.description}}</p>
+       <!-- <a href="#" class="d-flex flex-row-reverse">
+          <h5 class="waves-effect p-2" mdbRippleRadius>Read more <i class="fa fa-chevron-right"></i></h5>
+        </a>-->
+      </div>
+      <!--/.Card content-->
+    </div>
+    <!--/.Card Dark-->
   </div>
+
+
+  <ul>
+    <li >
+      <span></span>
+      <span></span>
+      <span></span>
+      <!-- <i class="delete" (click)="deleteTask(i)">[x]</i>-->
+    </li>
+  </ul>
+</div>
+
+<!--<div style="width: 300px; margin-bottom: 20px;">
+  <h3>Select a single city</h3>
+  <ng-select [allowClear]="true"
+             [items]="items"
+             [disabled]="disabled"
+             (data)="refreshValue($event)"
+             (selected)="selected($event)"
+             (removed)="removed($event)"
+             (typed)="typed($event)"
+             placeholder="No city selected">
+  </ng-select>
+  <p></p>
+  <pre>{{value.text}}</pre>
   <div>
-    <label >select category</label>
-    <input formControlName="date" type="date">
+    <button type="button" class="btn btn-primary"
+            [(ngModel)]="disabledV" btnCheckbox
+            btnCheckboxTrue="1" btnCheckboxFalse="0">
+      {{disabled === '1' ? 'Enable' : 'Disable'}}
+    </button>
   </div>
-  <div>
-    <label>description</label>
-    <textarea formControlName="description"></textarea>
-  </div>
-  <button type="button" (click)="createSpendMoney($event)" class="btn btn-primary waves-light" mdbRippleRadius>add</button>
-</form>
-
-
-
-
-<ul>
-  <li *ngFor="let amountMoneyList of moneyTaskList | async;let i=index">
-    <span>{{amountMoneyList.value}}</span>
-    <span>{{amountMoneyList.description}}</span>
-    <span>{{amountMoneyList.date}}</span>
-   <!-- <i class="delete" (click)="deleteTask(i)">[x]</i>-->
-  </li>
-</ul>
+</div>-->

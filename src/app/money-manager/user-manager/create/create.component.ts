@@ -4,18 +4,27 @@ import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/databa
 import { FirebaseApp } from 'angularfire2';
 import { UserManagerService } from '../user-manager.service';
 
+
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
-  styleUrls: ['./create.component.css']
+  styleUrls: ['./create.component.css'],
 })
 export class CreateComponent implements OnInit {
   public amountMoneyVal;
   public moneyTaskList;
+  public categoryList;
+  public addCategory: string;
+
  // public moneyTaskList: FirebaseListObservable<any[]> = this.angularFireDatabase.list('/amountMoney');
 
 
   public createSpendMoneyForm: FormGroup = new FormGroup({
+    name: new FormControl('', [
+      Validators.required,
+      Validators.minLength(3),
+      Validators.maxLength(24),
+    ]),
     amountMoney: new FormControl('', [
       Validators.required,
       Validators.minLength(3),
@@ -27,6 +36,7 @@ export class CreateComponent implements OnInit {
       Validators.minLength(3),
       Validators.maxLength(24),
     ]),
+    moneyCategory:new FormControl('', [])
   });
 
   constructor(public userManagerService: UserManagerService,
@@ -37,6 +47,27 @@ export class CreateComponent implements OnInit {
       this.moneyTaskList = res;
     });
 
+    userManagerService.getCategoryList().then((res: any[]) => {
+      this.categoryList = res;
+    });
+
+    console.log(this.categoryList);
+    console.log(this.moneyTaskList);
+
+
+
+  }
+
+  public refreshList() {
+    this.userManagerService.getCategoryList().then((res: any[]) => {
+      this.categoryList = res;
+    });
+
+  }
+
+
+  public addCategoryData()  {
+    this.userManagerService.addCategoryData(this.addCategory);
 
   }
 
@@ -45,8 +76,7 @@ export class CreateComponent implements OnInit {
 
     this.amountMoneyVal = this.createSpendMoneyForm.value;
     this.userManagerService.addMoneyTask(this.amountMoneyVal);
-
-    console.log(this.amountMoneyVal);
+    console.log(this.createSpendMoneyForm.value);
   }
 
 

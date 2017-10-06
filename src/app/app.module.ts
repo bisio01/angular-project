@@ -23,7 +23,7 @@ import { WeatherComponent } from './weather/weather.component';
 import { WeatherService } from './weather/weather.service';
 import { UserManagerService } from './money-manager/user-manager/user-manager.service';
 import { MDBBootstrapModule } from 'angular-bootstrap-md'
-
+import {SelectModule} from 'ng2-select';
 
 
 export const firebaseConfig = {
@@ -60,6 +60,7 @@ export const firebaseConfig = {
     AngularFireDatabaseModule,
     FormsModule,
     MDBBootstrapModule.forRoot(),
+    SelectModule
 
   ],
   providers: [

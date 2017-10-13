@@ -100,10 +100,14 @@ export class UserManagerService {
     this.agencyItems = this.angularFireDatabase.list('/categoryMoney/', {preserveSnapshot: true});
     this.agencyItems.subscribe(snapshots => {
       this._categoryData.next(
+
         snapshots.map(sn => {
-          console.log(1, );
-          return sn;
-        })
+
+          return {
+            ...sn.val(),
+            subCategory: snapshots.filter(el => el.val().parentId == sn.val().id).map(el => el.val())
+          }
+        }).filter(el => !el.hasOwnProperty('parentId'))
       )
     });
   }

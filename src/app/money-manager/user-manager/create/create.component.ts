@@ -19,7 +19,7 @@ export class CreateComponent implements OnInit {
   public addSubCategory: string;
   public subCategoryToggleVal: boolean;
 
-  categoryData: any = this.userManagerService.categoryData;
+  public categoryData: any = this.userManagerService.categoryData;
 
   public createSpendMoneyForm: FormGroup = new FormGroup({
     name: new FormControl('', [
@@ -45,7 +45,7 @@ export class CreateComponent implements OnInit {
               public angularFireDatabase: AngularFireDatabase,
               @Inject(FirebaseApp) firebaseApp: any) {
 
-    this.userManagerService.loadCategoryData()
+    this.userManagerService.loadCategoryData();
 
     userManagerService.getList().then((res: any[]) => {
       this.moneyTaskList = res;
@@ -62,7 +62,10 @@ export class CreateComponent implements OnInit {
     // let categoryData: any = userManagerService.getCategoryData();
     //  console.log(categoryData.value);
 
-    console.log(this.categoryList);
+    console.log(this.categoryData.forEach((currentValue, i, array) => {
+      console.log(currentValue);
+
+    }) , 'categoryData');
     console.log(this.moneyTaskList);
 
 

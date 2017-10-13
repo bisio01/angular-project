@@ -1,49 +1,49 @@
 <div class="container">
-  <form [formGroup]="createSpendMoneyForm">
-    <div class="">
-      <label>enter name</label>
-      <input type="text" formControlName="name">
-    </div>
 
+  <div class="row">
 
-    <div>
-      <label>enter amount</label>
-      <input type="number" formControlName="amountMoney">
-    </div>
-    <div>
-      <label>select category</label>
-      <div class="row">
-        <div class="col-md-6">
-          <label>Example label</label>
+    <div class="col">
+      <form [formGroup]="createSpendMoneyForm">
+        <div class="input-wrapper">
+          <h4 class="label-title">Enter name</h4>
+          <input class="field" type="text" formControlName="name">
         </div>
-      </div>
 
-      <select (click)="refreshList()" formControlName="moneyCategory">
-        <option *ngFor="let category of categoryList | async;let i=index"  [value]="category?.i">{{category?.value}}</option>
-      </select>
-    </div>
-    <div>
-      <label>select date</label>
-      <input formControlName="date" type="date">
-    </div>
-    <div>
-      <label>description</label>
-      <textarea formControlName="description"></textarea>
-    </div>
-    <button type="button" (click)="createSpendMoney($event)" class="btn btn-primary waves-light" mdbRippleRadius>add
-    </button>
-  </form>
 
-  <input type="text" placeholder="add category" [(ngModel)]="addCategory">
-  <button (click)="addCategoryData()" >add</button>
+        <div class="input-wrapper">
+          <h4 class="label-title">Enter amount</h4>
+          <input class="field" type="number" formControlName="amountMoney">
+        </div>
+        <div class="input-wrapper">
+          <h4 class="label-title">Select category</h4>
+          <select (click)="refreshList()" formControlName="moneyCategory">
+            <option *ngFor="let category of categoryList | async;let i=index" [value]="category?.i">
+              {{category?.value}}
+            </option>
+          </select>
+        </div>
+        <div class="input-wrapper">
+          <h4 class="label-title">Select date</h4>
+          <input class="field" formControlName="date" type="date">
+        </div>
 
-  <div class="item-wrapper" >
+        <button type="button" (click)="createSpendMoney($event)" class="btn btn-primary waves-light" mdbRippleRadius>add
+        </button>
+      </form>
+    </div>
+
+    <div class="col">
+    </div>
+
+
+  </div>
+  <div class="item-wrapper">
     <!--Card Dark-->
     <div class="card card-dark" *ngFor="let amountMoneyList of moneyTaskList | async;let i=index">
       <!--Card image-->
       <div class="view hm-white-slight waves-light" mdbRippleRadius>
         <p>{{amountMoneyList.date}}</p>
-       <!-- <img src="https://mdbootstrap.com/img/Photos/Horizontal/Work/4-col/img%20%2821%29.jpg" class="img-fluid" alt="">-->
+        <!-- <img src="https://mdbootstrap.com/img/Photos/Horizontal/Work/4-col/img%20%2821%29.jpg" class="img-fluid" alt="">-->
         <a>
           <div class="mask"></div>
         </a>
@@ -60,9 +60,9 @@
         <h4 class="card-title">{{amountMoneyList.value}}</h4>
         <!--Text-->
         <p class="card-text white-text">{{amountMoneyList.description}}</p>
-       <!-- <a href="#" class="d-flex flex-row-reverse">
-          <h5 class="waves-effect p-2" mdbRippleRadius>Read more <i class="fa fa-chevron-right"></i></h5>
-        </a>-->
+        <!-- <a href="#" class="d-flex flex-row-reverse">
+           <h5 class="waves-effect p-2" mdbRippleRadius>Read more <i class="fa fa-chevron-right"></i></h5>
+         </a>-->
       </div>
       <!--/.Card content-->
     </div>
@@ -70,14 +70,40 @@
   </div>
 
 
+  <hr>
+  <h3>Add category</h3>
+  <hr>
+  {{categoryData | async | json}}
+  <hr>
+
+  <input class="field" type="text" placeholder="add category" [(ngModel)]="addCategory">
+  <button (click)="addCategoryData()" class="btn btn-primary waves-light" mdbRippleRadius>add</button>
   <ul>
-    <li >
-      <span></span>
-      <span></span>
-      <span></span>
-      <!-- <i class="delete" (click)="deleteTask(i)">[x]</i>-->
+    <li *ngFor="let category of categoryList | async; let i=index">
+      <span>{{category?.value}}</span>
+      <button class="btn btn-primary waves-light" (click)="subCategoryToggle(category)" mdbRippleRadius>sub category
+      </button>
+      <div class="input-wrapper" *ngIf="category.showSubcategory">
+        <h4 class="label-title">Enter subcategory</h4>
+        <input class="field" type="text" [(ngModel)]="category.addSubCategory">
+        <button (click)="addSubCategoryVal(category)">add sub category</button>
+      </div>
     </li>
   </ul>
+
+  <button type="button" (click)="firebase()">do</button>
+
+  <ul>
+    <li *ngFor="let subCategory of subCategoryList | async; let i=index">
+      <span>{{subCategory?.value}}</span>
+      <span>{{subCategory?.parentId}}</span>
+
+    </li>
+  </ul>
+
+  <button></button>
+
+
 </div>
 
 <!--<div style="width: 300px; margin-bottom: 20px;">

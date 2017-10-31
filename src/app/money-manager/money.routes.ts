@@ -1,7 +1,6 @@
 import { Routes } from '@angular/router';
 import { ListComponent } from './user-manager/list/list.component';
 import { CreateComponent } from './user-manager/create/create.component';
-import { CurrencyExchangeComponent } from './currency-exchange/currency-exchange.component';
 
 export const MoneyRoutes: Routes = [
   {
@@ -30,16 +29,6 @@ export const MoneyRoutes: Routes = [
             component: <any>CreateComponent
           }
         ]
-      },
-      {
-        path: 'currency-exchange',
-        children: [
-          {
-            path: '',
-            component: <any>CurrencyExchangeComponent
-          }
-        ]
-
       },
     ]
   }

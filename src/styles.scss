@@ -3,7 +3,8 @@ input[type=text], input[type=password], input[type=email], input[type=url], inpu
 }
 
 .navbar-dark {
-  background: #000;
+  background: #35343b;
+  height: 90px;
 }
 
 .content-bg {
@@ -12,8 +13,13 @@ input[type=text], input[type=password], input[type=email], input[type=url], inpu
   color: #fff;
 }
 
+.main-bg {
+
+}
+
 .content {
   padding: 30px 0;
+
 }
 
 .weather-container {
@@ -48,10 +54,6 @@ input[type=text].input-city {
   }
 }
 
-.container {
-  padding-top: 40px;
-}
-
 .label-title {
   font-size: 16px;
 }
@@ -61,12 +63,99 @@ input[type=text].input-city {
 
 }
 
-.container {
+.main-container {
+  background: #f3f4f6;
+  padding: 40px 30px;
+  height: calc(100vh - 90px);
+  overflow-y:auto ;
+  margin-left: 300px;
+  select.field {
+    height: 36px;
+  }
   .field {
-    height: 26px;
-    border: 1px solid #bdbdbd;
-    padding: 2px 5px;
+    height: inherit;
+    border: 1px solid #d6dce1;
+    padding: 5px 10px;
+    border-radius: 4px;
     resize: vertical;
     width: 100%;
+    color: #252525;
+    background: #fff;
+    min-height: 36px;
   }
 }
+
+.section-overlay {
+  &.active {
+    &:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 10;
+    }
+  }
+}
+
+.bg-section {
+  background: #fff;
+  border-radius: 4px;
+  padding: 20px 30px;
+  margin-bottom: 20px;
+}
+
+.section-heading {
+  color: #6a6a6a;
+  font-weight: 300;
+  margin-bottom: 25px;
+}
+
+.section {
+  margin-bottom: 30px;
+}
+
+.btn,
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active {
+  background: linear-gradient(#de424d, #f34a52) !important;
+}
+
+.aside {
+  position: fixed;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 480px;
+  background: #fff;
+  padding: 30px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.14);
+  transition: all 0.3s;
+  transform: translateX(480px);
+  &.active {
+    transform: translateX(0);
+    z-index: 100;
+  }
+}
+
+.list-group-item {
+  .btn {
+    padding: 12px;
+    border-radius: 20px;
+    font-size: 10px;
+  }
+}
+
+.left-aside {
+  position: fixed;
+  left: 0;
+  top: 90px;
+  bottom: 0;
+  color: #fff;
+  background: linear-gradient(to top right, #ff4563, #ff6345);
+  width: 300px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.14);
+  padding: 30px 20px;
+}
+

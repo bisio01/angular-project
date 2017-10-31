@@ -13,7 +13,6 @@ import { AuthForgotPassComponent } from './auth/auth-forgot-pass/auth-forgot-pas
 import { AngularFireAuth } from 'angularfire2/auth';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { UserInfoComponent } from './user-info/user-info.component';
-import { CurrencyExchangeComponent } from './money-manager/currency-exchange/currency-exchange.component';
 import { CreateComponent } from './money-manager/user-manager/create/create.component';
 import { UpdateComponent } from './money-manager/user-manager/update/update.component';
 import { ViewComponent } from './money-manager/user-manager/view/view.component';
@@ -44,7 +43,6 @@ export const firebaseConfig = {
     AuthForgotPassComponent,
     DashboardComponent,
     UserInfoComponent,
-    CurrencyExchangeComponent,
     CreateComponent,
     UpdateComponent,
     ViewComponent,

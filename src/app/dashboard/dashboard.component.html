@@ -1,43 +1,44 @@
 <mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark" [containerInside]="false">
-  <div class="container">
-    <logo>
-      <a class="logo navbar-brand" href="#"><strong>Navbar</strong></a>
-    </logo>
-    <links>
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active waves-light" mdbRippleRadius>
-          <a class="nav-link" [routerLink]="['/todolist']" [routerLinkActive]="['active']">todolist<span
-            class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item waves-light" mdbRippleRadius>
-          <a class="nav-link" [routerLink]="['/user']" [routerLinkActive]="['active']">user</a>
-        </li>
-        <li class="nav-item waves-light" mdbRippleRadius>
-          <a class="nav-link" [routerLink]="['/money-manager']" [routerLinkActive]="['active']">money-manager</a>
-        </li>
-        <li class="nav-item waves-light" mdbRippleRadius>
-          <a class="nav-link" [routerLink]="['/money-manager/currency-exchange']" [routerLinkActive]="['active']">currency-exchange</a>
-        </li>
-        <li class="nav-item waves-light" mdbRippleRadius>
-          <a class="nav-link" [routerLink]="['/weather']" [routerLinkActive]="['active']">weather</a>
-        </li>
-        <li class="nav-item waves-light" mdbRippleRadius>
-          <a class="nav-link" [routerLink]="['/money-manager/create']" [routerLinkActive]="['active']">create</a>
-        </li>
-        <li class="nav-item waves-light" mdbRippleRadius>
-          <a class="nav-link" [routerLink]="['/money-manager/list']" [routerLinkActive]="['active']">list</a>
-        </li>
-      </ul>
-    </links>
-  </div>
+
+  <logo>
+    <a class="logo navbar-brand" href="#"><strong>Navbar</strong></a>
+  </logo>
+  <links>
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active waves-light" mdbRippleRadius>
+        <a class="nav-link" [routerLink]="['/todolist']" [routerLinkActive]="['active']">todolist<span
+          class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item waves-light" mdbRippleRadius>
+        <a class="nav-link" [routerLink]="['/user']" [routerLinkActive]="['active']">user</a>
+      </li>
+      <li class="nav-item waves-light" mdbRippleRadius>
+        <a class="nav-link" [routerLink]="['/weather']" [routerLinkActive]="['active']">weather</a>
+      </li>
+      <li class="nav-item waves-light" mdbRippleRadius>
+        <a class="nav-link" [routerLink]="['/money-manager/create']" [routerLinkActive]="['active']">create</a>
+      </li>
+      <li class="nav-item waves-light" mdbRippleRadius>
+        <a class="nav-link" [routerLink]="['/money-manager/list']" [routerLinkActive]="['active']">list</a>
+      </li>
+    </ul>
+  </links>
+
 </mdb-navbar>
-<!-- Main -->
-<main>
+<aside class="left-aside">
+  <input class="field" type="number" [(ngModel)]="current">
+  <ul>
+    <li *ngFor="let result of ratesData; let i = index">{{result.label}} <span>{{result.value}}</span> <span
+      *ngIf="current?.length">{{result.value * current}}</span></li>
+  </ul>
+</aside>
+<div class="main-container">
+  <div class="main-inner">
+    <router-outlet></router-outlet>
+  </div>
+</div>
 
-  <router-outlet></router-outlet>
 
-</main>
-<!-- /.Main -->
 
 
 

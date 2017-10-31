@@ -1,109 +1,95 @@
-<div class="container">
-
-  <div class="row">
-
-    <div class="col">
-      <form [formGroup]="createSpendMoneyForm">
-        <div class="input-wrapper">
-          <h4 class="label-title">Enter name</h4>
-          <input class="field" type="text" formControlName="name">
-        </div>
-
-
-        <div class="input-wrapper">
-          <h4 class="label-title">Enter amount</h4>
-          <input class="field" type="number" formControlName="amountMoney">
-        </div>
-        <div class="input-wrapper">
-          <h4 class="label-title">Select category</h4>
-          <select (click)="refreshList()" formControlName="moneyCategory">
-            <option *ngFor="let category of categoryList | async;let i=index" [value]="category?.i">
-              {{category?.value}}
-            </option>
-          </select>
-        </div>
-        <div class="input-wrapper">
-          <h4 class="label-title">Select date</h4>
-          <input class="field" formControlName="date" type="date">
-        </div>
-
-        <button type="button" (click)="createSpendMoney($event)" class="btn btn-primary waves-light" mdbRippleRadius>add
-        </button>
-      </form>
+<div class="section-overlay" [ngClass]="{'active': asideState}">
+  <h1 class="section-heading h1 pt-4">Spend Money</h1>
+  <div class="section">
+    <div class="row">
+      <div class="col">
+        <form [formGroup]="createSpendMoneyForm">
+          <div class="bg-section">
+            <div class="input-wrapper">
+              <h4 class="label-title">Enter amount</h4>
+              <input class="field" type="number" formControlName="amountMoney">
+            </div>
+          </div>
+          <div class="bg-section">
+            <div class="input-wrapper">
+              <h4 class="label-title">Enter name</h4>
+              <input class="field" type="text" formControlName="name">
+            </div>
+            <div class="input-wrapper">
+              <h4 class="label-title">Select date</h4>
+              <input class="field" formControlName="date" type="date">
+            </div>
+          </div>
+          <div class="bg-section">
+            <div class="input-wrapper">
+              <h4 class="label-title">Select category</h4>
+              <div class="d-flex justify-content-between align-items-center">
+                <select class="field" (click)="refreshList()" formControlName="moneyCategory">
+                  <option *ngFor="let category of categoryList | async;let i=index" [value]="category?.value">
+                    {{category?.value}}
+                  </option>
+                </select>
+                <button type="button" (click)="asideToggle($event)" class="btn btn-primary waves-light" mdbRippleRadius>
+                  Add category
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="bg-section">
+            <div class="input-wrapper">
+              <h4 class="label-title">Description</h4>
+              <textarea class="field"></textarea>
+            </div>
+          </div>
+          <button type="button" (click)="createSpendMoney($event)" class="btn btn-primary waves-light" mdbRippleRadius>
+            Create
+          </button>
+        </form>
+      </div>
+      <div class="col"></div>
     </div>
-
-    <div class="col">
-    </div>
-
-
   </div>
-  <div class="item-wrapper">
-    <!--Card Dark-->
-    <div class="card card-dark" *ngFor="let amountMoneyList of moneyTaskList | async;let i=index">
-      <!--Card image-->
-      <div class="view hm-white-slight waves-light" mdbRippleRadius>
-        <p>{{amountMoneyList.date}}</p>
-        <!-- <img src="https://mdbootstrap.com/img/Photos/Horizontal/Work/4-col/img%20%2821%29.jpg" class="img-fluid" alt="">-->
-        <a>
-          <div class="mask"></div>
-        </a>
-      </div>
-      <!--/.Card image-->
-      <!--Card content-->
-      <div class="card-body">
-        <!--Social shares button-->
-        <a class="activator"><i class="fa fa-share-alt white-text"></i></a>
-        <!--Title-->
-
-        <h4 class="card-title">{{amountMoneyList.name}}</h4>
-        <hr>
-        <h4 class="card-title">{{amountMoneyList.value}}</h4>
-        <!--Text-->
-        <p class="card-text white-text">{{amountMoneyList.description}}</p>
-        <!-- <a href="#" class="d-flex flex-row-reverse">
-           <h5 class="waves-effect p-2" mdbRippleRadius>Read more <i class="fa fa-chevron-right"></i></h5>
-         </a>-->
-      </div>
-      <!--/.Card content-->
-    </div>
-    <!--/.Card Dark-->
-  </div>
-
-
   <hr>
-  <h3>Add category</h3>
-  <hr>
-  {{categoryData | async | json}}
-  <hr>
-
-  <input class="field" type="text" placeholder="add category" [(ngModel)]="addCategory">
-  <button (click)="addCategoryData()" class="btn btn-primary waves-light" mdbRippleRadius>add</button>
-  <ul>
-    <li *ngFor="let category of categoryList | async; let i=index">
-      <span>{{category?.value}}</span>
-      <button class="btn btn-primary waves-light" (click)="subCategoryToggle(category)" mdbRippleRadius>sub category
-      </button>
-      <div class="input-wrapper" *ngIf="category.showSubcategory">
-        <h4 class="label-title">Enter subcategory</h4>
-        <input class="field" type="text" [(ngModel)]="category.addSubCategory">
-        <button (click)="addSubCategoryVal(category)">add sub category</button>
-      </div>
-    </li>
-  </ul>
-
-
-  <ul>
-    <li *ngFor="let subCategory of subCategoryList | async; let i=index">
-      <span>{{subCategory?.value}}</span>
-      <span>{{subCategory?.parentId}}</span>
-
-    </li>
-  </ul>
-
-  <button></button>
 
 
 </div>
+
+<aside class="aside" [ngClass]="{'active': asideState}">
+  <h3>Add category</h3>
+
+  <input class="field" type="text" placeholder="add category" [(ngModel)]="addCategory">
+  <button (click)="addCategoryData()" class="btn btn-primary waves-light" mdbRippleRadius>add</button>
+
+  <button (click)="asideToggle($event)" class="btn btn-primary waves-light" mdbRippleRadius>Hide</button>
+
+
+  <ul class="list-group">
+    <li class="list-group-item"
+        *ngFor="let category of categoryData | async; let i=index">
+      <div class="list-inner d-flex justify-content-between align-items-center">
+        <span>{{category?.value}}</span>
+        <button class="btn btn-primary waves-light" (click)="subCategoryToggle(category)" mdbRippleRadius>sub category
+        </button>
+
+        <span class="badge badge-primary badge-pill">{{category.subCategory.length}}</span>
+      </div>
+      <div class="input-wrapper" *ngIf="category.showSubcategory">
+        <h4 class="label-title">Enter subcategory</h4>
+        <div class="d-flex justify-content-between align-items-center">
+          <input class="field" type="text" [(ngModel)]="category.addSubCategory">
+          <button class="btn btn-primary waves-light" mdbRippleRadius (click)="addSubCategoryVal(category)">add sub
+            category
+          </button>
+        </div>
+      </div>
+      <ul class="list-group">
+        <li class="list-group-item d-flex justify-content-between align-items-center"
+            *ngFor="let subCategory of category.subCategory">{{subCategory?.value}}
+        </li>
+      </ul>
+    </li>
+  </ul>
+</aside>
 
 <!--<div style="width: 300px; margin-bottom: 20px;">
   <h3>Select a single city</h3>

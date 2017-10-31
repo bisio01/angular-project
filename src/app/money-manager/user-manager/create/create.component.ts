@@ -5,6 +5,8 @@ import { FirebaseApp } from 'angularfire2';
 import { UserManagerService } from '../user-manager.service';
 
 
+
+
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
@@ -18,6 +20,11 @@ export class CreateComponent implements OnInit {
   public addCategory: string;
   public addSubCategory: string;
   public subCategoryToggleVal: boolean;
+
+  public asideState = false;
+
+
+
 
   public categoryData: any = this.userManagerService.categoryData;
 
@@ -49,6 +56,8 @@ export class CreateComponent implements OnInit {
 
     userManagerService.getList().then((res: any[]) => {
       this.moneyTaskList = res;
+
+      console.log(this.moneyTaskList, 'qweqwe');
     });
 
     userManagerService.getCategoryList().then((res: any[]) => {
@@ -61,12 +70,6 @@ export class CreateComponent implements OnInit {
 
     // let categoryData: any = userManagerService.getCategoryData();
     //  console.log(categoryData.value);
-
-    console.log(this.categoryData.forEach((currentValue, i, array) => {
-      console.log(currentValue);
-
-    }) , 'categoryData');
-    console.log(this.moneyTaskList);
 
 
   }
@@ -98,6 +101,7 @@ export class CreateComponent implements OnInit {
   public createSpendMoney() {
     event.preventDefault();
     this.amountMoneyVal = this.createSpendMoneyForm.value;
+    console.log(this.amountMoneyVal);
     this.userManagerService.addMoneyTask(this.amountMoneyVal);
 
   }
@@ -105,6 +109,13 @@ export class CreateComponent implements OnInit {
   public subCategoryToggle(el) {
     el.showSubcategory = !el.showSubcategory;
   }
+
+  public asideToggle(el) {
+    this.asideState = !this.asideState;
+  }
+
+
+
 
 
   ngOnInit() {

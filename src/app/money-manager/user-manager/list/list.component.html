@@ -1,49 +1,45 @@
-<div class="container">
+<!--Section: Pricing v.4-->
+<section class="section pb-3">
+  <!--Section heading-->
+  <h1 class="section-heading h1 pt-4">Pricing plans</h1>
+  <!--Section description-->
+  <p class="section-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, error amet numquam
+    iure provident voluptate esse quasi, veritatis totam voluptas nostrum quisquam eum porro a pariatur accusamus
+    veniam.</p>
 
-  <!--Section: Pricing v.4-->
-  <section class="section pb-3">
-    <!--Section heading-->
-    <h1 class="section-heading h1 pt-4">Pricing plans</h1>
-    <!--Section description-->
-    <p class="section-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, error amet numquam iure provident voluptate esse quasi, veritatis totam voluptas nostrum quisquam eum porro a pariatur accusamus veniam.</p>
+  <!--Grid row-->
+  <div class="row">
 
-    <!--Grid row-->
-    <div class="row">
+    <!--Grid column-->
+    <div class="col-lg-4 col-md-12 mb-r" *ngFor="let amountMoneyList of moneyTaskList | async;let i=index">
+      <!--Card-->
+      <div class="card  mdb-color lighten-3">
 
-      <!--Grid column-->
-      <div class="col-lg-4 col-md-12 mb-r" *ngFor="let amountMoneyList of moneyTaskList | async;let i=index">
-        <!--Card-->
-        <div class="card  mdb-color lighten-3">
-
-          <!--Content-->
-          <div class="text-center">
-            <div class="card-body">
-              <h5>{{amountMoneyList.name}}</h5>
-              <div class="flex-center">
-                <div class="card-circle">
-                  <i class="fa fa-home indigo-text"></i>
-                </div>
+        <!--Content-->
+        <div class="text-center">
+          <div class="card-body">
+            <h5>{{amountMoneyList.name}}</h5>
+            <div class="flex-center">
+              <div class="card-circle">
+                <i class="fa fa-home indigo-text"></i>
               </div>
-
-              <!--Price-->
-              <h2><strong>{{amountMoneyList.value}}</strong></h2>
-              <p class="grey-text">{{amountMoneyList.date}}</p>
-              <p class="grey-text">{{amountMoneyList.description}}</p>
-              <a class="btn btn-indigo btn-rounded waves-light" mdbRippleRadius>Buy now</a>
             </div>
+
+            <!--Price-->
+            <span>{{amountMoneyList?.category}}</span>
+            <h2><strong>{{amountMoneyList.value}}</strong></h2>
+            <p class="grey-text">{{amountMoneyList.date}}</p>
+            <p class="grey-text">{{amountMoneyList.description}}</p>
+            <a class="btn btn-indigo btn-rounded waves-light" mdbRippleRadius>Buy now</a>
           </div>
-
         </div>
-        <!--Card-->
+
       </div>
-      <!--Grid column-->
-
+      <!--Card-->
     </div>
-    <!--Grid row-->
-  </section>
-  <!--Section: Pricing v.4-->
+    <!--Grid column-->
 
-
-
-
-</div>
+  </div>
+  <!--Grid row-->
+</section>
+<!--Section: Pricing v.4-->

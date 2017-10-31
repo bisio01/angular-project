@@ -2,8 +2,11 @@
   todolist works!
 </p>
 <form [formGroup]="todoListForm" (ngSubmit)="onSubmit(form)">
-  <input type="text" formControlName="todoInput">
-  <button type="submit">send</button>
+  <div class="input-wrapper">
+    <h4 class="label-title">Enter task</h4>
+    <input class="field" type="text" formControlName="todoInput">
+  </div>
+  <button type="submit" class="btn btn-primary waves-light" mdbRippleRadius>Send</button>
 </form>
 <div>
   <!-- <ul>
@@ -14,24 +17,26 @@
      </li>
    </ul>-->
   <h3>New Task</h3>
-  <ul>
-    <li *ngFor="let todoLists of todoList;let i=index">
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let todoLists of todoList;let i=index">
       <input type="checkbox" [(ngModel)]="todoLists.completed">
       <span>{{todoLists.name}}</span>
-      <i class="delete" (click)="deleteTask(i)">[x]</i>
+      <i class="fa fa-times" aria-hidden="true" (click)="deleteTask(i)"></i>
     </li>
   </ul>
-  <div><button type="button" (click)="doneTask()" >Done</button> </div>
+  <div>
+    <button type="button" class="btn btn-primary waves-light" mdbRippleRadius (click)="doneTask()">Done</button>
+  </div>
   <h3>Done Task</h3>
-  <ul>
-    <li *ngFor="let doneTaskLists of doneTaskList; let i=index">
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let doneTaskLists of doneTaskList; let i=index">
       <span>{{doneTaskLists.name}}</span>
     </li>
   </ul>
 
   <h3>FireBase</h3>
-  <ul>
-    <li *ngFor="let todoLists of todoListData | async;let i=index">
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let todoLists of todoListData | async;let i=index">
       <span>{{todoLists.content}}</span>
       <i class="delete" (click)="deleteTask(i)">[x]</i>
     </li>

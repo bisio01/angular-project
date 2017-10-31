@@ -28,7 +28,8 @@ export class UserManagerService {
       name: data.name,
       value: data.amountMoney,
       date: data.date,
-      description: data.description
+      description: data.description,
+      category: data.moneyCategory
     });
   }
 
@@ -43,8 +44,6 @@ export class UserManagerService {
 
   public addSubCategoryData(data, parentId) {
     let uuid = this.guid();
-
-    console.log(data, 'qweqwe');
     this.moneyCategoryData.push({
       id: uuid,
       value: data,

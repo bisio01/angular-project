@@ -20,13 +20,6 @@ export class DashboardComponent implements OnInit {
 
     this.letSearch();
     this.getRates();
-
-    let x = this.cars.filter((val, i, cars) => {
-
-
-      return val === 'Volvo';
-    });
-    console.log(x);
   }
 
   // Get http result

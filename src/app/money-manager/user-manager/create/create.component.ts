@@ -56,8 +56,6 @@ export class CreateComponent implements OnInit {
 
     userManagerService.getList().then((res: any[]) => {
       this.moneyTaskList = res;
-
-      console.log(this.moneyTaskList, 'qweqwe');
     });
 
     userManagerService.getCategoryList().then((res: any[]) => {
@@ -92,7 +90,6 @@ export class CreateComponent implements OnInit {
   }
 
   public addSubCategoryVal(el) {
-    console.log(el, 'qweqwe');
     this.userManagerService.addSubCategoryData(el.addSubCategory, el.id);
 
 

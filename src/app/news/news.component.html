@@ -1,0 +1,55 @@
+<!--Section: Blog v.3-->
+<section class="section extra-margins pb-3 text-center text-lg-left">
+
+  <!--Section heading-->
+  <h2 class="section-heading h1 pt-4">Recent posts</h2>
+
+  <!--Section description-->
+  <p class="section-description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+    nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
+    est laborum.</p>
+  <button type="button" (click)="allNews()">All news</button>
+  <button type="button" (click)="favoriteNews()">Favorite news</button>
+  <!--Grid row-->
+  <div class="grid-row-wrapper">
+    <div class="row" *ngFor="let news of filteredNewsData">
+      <!--Grid column-->
+      <div class="col-lg-4 mb-4">
+        <!--Featured image-->
+        <div class="view overlay hm-white-slight waves-light" mdbRippleRadius>
+          <img src="{{news.urlToImage}}" alt="First sample image">
+          <a>
+            <div class="mask"></div>
+          </a>
+        </div>
+      </div>
+      <!--Grid column-->
+
+      <!--Grid column-->
+      <div class="col-lg-7 mb-4">
+        <!--Excerpt-->
+        <button [hidden]="news.isFavorite" type="button" class="teal-text" (click)="addToFavorite($event, news)">
+            <i class="fa fa-heart" ></i>
+            <strong> Add to favorite </strong>
+        </button>
+        <button [hidden]="!news.isFavorite" type="button" class="teal-text" (click)="removeFromFavorite($event, news)">
+            <i class="fa fa-heart-o"  aria-hidden="true"></i>
+            <strong> Remove from favorite </strong>
+        </button>
+
+
+
+        <h4 class="mb-4"><strong>{{news.title}}</strong></h4>
+        <p>{{news.description}}</p>
+        <p>by <a><strong>{{news.author}}</strong></a>, {{news.publishedAt | date:'medium'}}</p>
+        <a href="{{news.url}}" class="btn btn-primary waves-light" mdbRippleRadius>Read more</a>
+      </div>
+      <!--Grid column-->
+
+    </div>
+    <!--Grid row-->
+    <hr class="mb-5">
+  </div>
+</section>
+<!--Section: Blog v.3-->
+

@@ -6,6 +6,7 @@ import { UserInfoComponent } from './user-info/user-info.component';
 import { MoneyRoutes } from './money-manager/money.routes';
 import { DashboardRoutes } from './dashboard/dashboard.routes';
 import { WeatherComponent } from './weather/weather.component';
+import { NewsComponent } from './news/news.component';
 
 export const ROUTES:RouterModule = [
   {
@@ -31,6 +32,10 @@ export const ROUTES:RouterModule = [
       {
         path: 'weather',
         component: WeatherComponent
+      },
+      {
+        path: 'news',
+        component: NewsComponent
       },
     ]
   }

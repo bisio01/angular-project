@@ -23,6 +23,7 @@ import { WeatherService } from './weather/weather.service';
 import { UserManagerService } from './money-manager/user-manager/user-manager.service';
 import { MDBBootstrapModule } from 'angular-bootstrap-md'
 import {SelectModule} from 'ng2-select';
+import { NewsComponent } from './news/news.component';
 
 
 export const firebaseConfig = {
@@ -48,6 +49,7 @@ export const firebaseConfig = {
     ViewComponent,
     ListComponent,
     WeatherComponent,
+    NewsComponent,
   ],
   imports: [
     BrowserModule,

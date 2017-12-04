@@ -13,6 +13,9 @@
         <a class="nav-link" [routerLink]="['/user']" [routerLinkActive]="['active']">user</a>
       </li>
       <li class="nav-item waves-light" mdbRippleRadius>
+        <a class="nav-link" [routerLink]="['/news']" [routerLinkActive]="['active']">News</a>
+      </li>
+      <li class="nav-item waves-light" mdbRippleRadius>
         <a class="nav-link" [routerLink]="['/weather']" [routerLinkActive]="['active']">weather</a>
       </li>
       <li class="nav-item waves-light" mdbRippleRadius>
@@ -27,9 +30,9 @@
 </mdb-navbar>
 <aside class="left-aside">
   <input class="field" type="number" [(ngModel)]="current">
-  <ul>
-    <li *ngFor="let result of ratesData; let i = index">{{result.label}} <span>{{result.value}}</span> <span
-      *ngIf="current?.length">{{result.value * current}}</span></li>
+  <ul class="aside-list">
+    <li *ngFor="let result of ratesData; let i = index">{{result.label}} <span >{{result.value}}</span> <span class="result"
+      *ngIf="current">{{result.value * current | number : '1.2-2'}}</span></li>
   </ul>
 </aside>
 <div class="main-container">

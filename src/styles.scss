@@ -2,6 +2,13 @@ input[type=text], input[type=password], input[type=email], input[type=url], inpu
   box-sizing: border-box;
 }
 
+button {
+  background: none;
+  box-shadow: none;
+  border: none;
+  cursor: pointer;
+}
+
 .navbar-dark {
   background: #35343b;
   height: 90px;
@@ -159,3 +166,16 @@ input[type=text].input-city {
   padding: 30px 20px;
 }
 
+.left-aside .result {
+  display: block;
+}
+
+.aside-list {
+  max-height: 50vh;
+  overflow-y: auto;
+  margin-top: 20px;
+}
+
+.view img{
+  width: 100%;
+}
